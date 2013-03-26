@@ -1,4 +1,4 @@
-table = (True and True, #t
+table = [True and True, #t
 False and True, #f
 1 == 1 and 2 == 1, #f
 "test" == "test", #t
@@ -18,7 +18,7 @@ not ("testing" == "testing" and "Zed" == "Cool Guy"), #t
 1 == 1 and not ("testing" == 1 or 1 == 0), #t
 "chunky" == "bacon" and not (3 == 4 or 3 == 3), #f
 3 == 3 and not ("testing" == "testing" or "Python" == "Fun") #f
-)
+]
 
 for i in table:
     print i
