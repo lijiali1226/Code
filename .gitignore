@@ -1,3 +1,6 @@
 *~
 *.pyc
-*/sessions
+sessions/
+lcthw/*
+!lcthw/*.c
+!lcthw/Makefile
