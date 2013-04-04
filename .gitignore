@@ -5,4 +5,5 @@ lcthw/*
 !lcthw/*.c
 !lcthw/*.h
 !lcthw/Makefile
-caex/
+ex/
+*.db
