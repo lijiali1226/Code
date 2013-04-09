@@ -1,5 +1,5 @@
 Coding Exercises
 
-* python（ *python2* ）-> lpthw cap2 
-* C -> lcthw
-* sql（ *sqlite3* ） ->  lsthw 
+* python2 -> lpthw cap2 cs101
+* sqlite3 -> lsthw 
+* C       -> lcthw
