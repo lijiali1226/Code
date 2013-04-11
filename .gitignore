@@ -7,3 +7,7 @@ lcthw/*
 !lcthw/Makefile
 ex/
 *.db
+*.txt
+backup/
+*.data
+vim/
