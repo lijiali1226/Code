@@ -11,3 +11,4 @@ ex/
 backup/
 *.data
 vim/
+/hide
