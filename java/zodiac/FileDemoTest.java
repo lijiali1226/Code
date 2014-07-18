@@ -1,6 +1,7 @@
 package com.yntravelsky.zodiac.lijiali;
 
 import com.yntravelsky.zodiac.lijun.FileDemo;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -19,40 +20,68 @@ import java.util.Map.Entry;
  */
 public class FileDemoTest {
 	public static void main(String[] args) throws InterruptedException {
-		float a = 0f, b = 0f, c = 0f, d = 0f, a1 = 0f, b1 = 0f, c1 = 0f, d1 = 0f;
+
 		for (int i = 0; i < 3; i++) {
-			long start = System.currentTimeMillis();
-
-			String txt = FileDemo.readTxt("JavaSource/test/lijiali/character_analyse_complex5.txt");
-			long time1 = System.currentTimeMillis();
-
-			Map<Character, Integer> m = FileDemo.analyseStr(txt);
-			long time2 = System.currentTimeMillis();
-
-			List<Map.Entry<Character, Integer>> sortTxt = FileDemo.sortMap(m);
-			Iterator<Entry<Character, Integer>> it1 = sortTxt.iterator();
-			while (it1.hasNext()) {
-				Entry<Character, Integer> entry = it1.next();
-				Character key = entry.getKey();
-				Integer value = entry.getValue();
-				System.out.println("字符：\"" + key + "\" 共有：" + value + "个");
-			}
-
-			long end = System.currentTimeMillis();
-
-			a = time1 - start;
-			b = time2 - time1;
-			c = end - time2;
-			d = end - start;
-			System.out.printf("时间/s: %.2f %.2f %.2f %.2f\n", a / 1000, b / 1000, c / 1000, d / 1000);
-			Thread.sleep(50000);
-
-			a1 += a;
-			b1 += b;
-			c1 += c;
-			d1 += d;
+			String path = "JavaSource/test/hzy/测试文档2.txt";
+			test(path);
+			test(path, "UTF-8");
+			// Thread.sleep(5000);
 		}
-		System.out.printf("时间/s: %.2f %.2f %.2f %.2f", Math.round(a1 / 3) / 1000.0, Math.round(b1 / 3) / 1000.0,
-				Math.round(c1 / 3) / 1000.0, Math.round(d1 / 3) / 1000.0);
+	}
+
+	public static String readTest(String path) {
+		String text = FileDemo.readTxt(path);
+		return text;
+	}
+
+	public static char[] readTest(String path, String encode) {
+		char[] text = FileDemo.readTxt2Chars(path, encode);
+		return text;
+	}
+
+	public static void test(String path) {
+		long start = System.currentTimeMillis();
+
+		String text = readTest(path);
+		long time1 = System.currentTimeMillis();
+
+		Map<Character, Integer> m = FileDemo.analyseStr(text);
+		long time2 = System.currentTimeMillis();
+
+		sortAndPrint(m);
+		long end = System.currentTimeMillis();
+		System.out.println("----------------------------读字符串------------------------------");
+		System.out.printf("读文件时间: %.2fs  分析文件时间:%.2fs  排序输出时间:%.2fs  总时间: %.2fs\n", (time1 - start) / 1000.0,
+				(time2 - time1) / 1000.0, (end - time2) / 1000.0, (end - start) / 1000.0);
+		System.out.println();
+	}
+
+	public static void test(String path, String encode) {
+		long start = System.currentTimeMillis();
+
+		char[] text = readTest(path, encode);
+		long time1 = System.currentTimeMillis();
+
+		Map<Character, Integer> m = FileDemo.analyseStr(text);
+		long time2 = System.currentTimeMillis();
+
+		sortAndPrint(m);
+		long end = System.currentTimeMillis();
+
+		System.out.println("-----------------------------读字符------------------------------");
+		System.out.printf("读文件时间: %.2fs  分析文件时间:%.2fs  排序输出时间:%.2fs  总时间: %.2fs\n", (time1 - start) / 1000.0,
+				(time2 - time1) / 1000.0, (end - time2) / 1000.0, (end - start) / 1000.0);
+		System.out.println();
+	}
+
+	public static void sortAndPrint(Map<Character, Integer> m) {
+		List<Map.Entry<Character, Integer>> sortTxt = FileDemo.sortMap(m);
+		Iterator<Entry<Character, Integer>> it1 = sortTxt.iterator();
+		while (it1.hasNext()) {
+			Entry<Character, Integer> entry = it1.next();
+			Character key = entry.getKey();
+			Integer value = entry.getValue();
+			// System.out.println("字符：\"" + key + "\" 共有：" + value + "个");
+		}
 	}
 }
