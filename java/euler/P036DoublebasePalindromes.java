@@ -1,6 +1,6 @@
 package euler;
 
-public class P035DoublebasePalindromes {
+public class P036DoublebasePalindromes {
 
 	public static boolean isPalindrome(String s) {
 		int i = 0, n = s.length() - 1;

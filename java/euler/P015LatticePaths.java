@@ -1,42 +1,23 @@
 package euler;
 
+import java.math.BigInteger;
+
 public class P015LatticePaths {
 
-	class Tree {
-		int N = 3;
+	public static BigInteger factorial(int n) {
+		if (n > 1)
+			return BigInteger.valueOf(n).multiply(factorial(n - 1));
+		return BigInteger.ONE;
+	}
 
-		class Node {
-			int data;
-			int i;
-			int j;
-			Node right;
-			Node down;
-
-			public Node(int i, int j) {
-				this.i = i;
-				this.j = j;
-				data = i * N + j;
-			}
-
-			public void displayNode() {
-				System.out.println("node " + data + " i " + i + " j " + j);
-			}
-
-		}
-
-		public void setTree() {
-			int i = 0, j = 0;
-			for (i = 0; i < N; i++) {
-				for (j = 0; j < N; j++) {
-					
-				}
-			}
-
-		}
+	public static BigInteger combination(int n, int r) {
+		// System.out.println(factorial(n) + " " + factorial(r) + " " + factorial(n - r));
+		return factorial(n).divide(factorial(r).multiply(factorial(n - r)));
 
 	}
 
 	public static void main(String args[]) {
-
+		final int N = 40, R = 20;
+		System.out.println(combination(N, R));
 	}
 }
