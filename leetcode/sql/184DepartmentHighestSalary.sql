@@ -1,0 +1,1 @@
+select d.Name,e.Name,a.Max_sal from (select DepartmentId,max(Salary) as Max_sal from Employee group by DepartmentId)as a,Employee e,Department d where e.Salary=a.Max_sal and e.DepartmentId=a.DepartmentId and d.Id=e.DepartmentId

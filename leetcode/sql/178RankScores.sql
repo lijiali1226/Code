@@ -1,0 +1,1 @@
+select s.Score,a.Rank from (select @i:=@i+1 as Rank,b.Score from (select distinct Score from Scores order by Score desc)as b,(select @i:=0)as c )as a join Scores s on a.Score=s.Score order by s.Score desc

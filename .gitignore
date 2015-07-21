@@ -1,10 +1,6 @@
 *~
 *.pyc
 sessions/
-lcthw/*
-!lcthw/*.c
-!lcthw/*.h
-!lcthw/Makefile
 ex/
 *.db
 *.txt

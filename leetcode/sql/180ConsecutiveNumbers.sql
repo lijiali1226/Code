@@ -1,0 +1,1 @@
+select distinct a.Num from Logs a,Logs b,Logs c where a.Num=b.Num and a.Id-b.Id=1 and b.Num=c.Num and b.Id-c.Id=1
