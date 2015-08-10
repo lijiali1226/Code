@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="GBK" />
+	<constant name="struts.convention.action.mapallmatches" value="true" />
+	<constant name="struts.objectFactory" value="spring" />
+
+	<package name="admin" namespace="/admin" extends="struts-default">
+
+		<global-results>
+			<result name="sql">/admin/error.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="Exception"
+				result="sql" />
+		</global-exception-mappings>
+
+
+		<action name="*_list" class="com.yntravelsky.sms.action.{1}Action"
+			method="list">
+			<result>/admin/{1}_list.jsp</result>
+			<result name="fail">/admin/error.jsp</result>
+		</action>
+
+		<action name="*_search*" class="com.yntravelsky.sms.action.{1}Action"
+			method="search{2}">
+			<result type="chain">{1}_list</result>
+			<result name="fail">/admin/error.jsp</result>
+		</action>
+
+		<action name="*_*" class="com.yntravelsky.sms.action.{1}Action"
+			method="{2}">
+			<result type="redirect">{1}_list</result>
+			<result name="input">/admin/{1}_{2}.jsp</result>
+			<result name="fail">/admin/error.jsp</result>
+		</action>
+
+
+	</package>
+
+	<package name="front" namespace="/" extends="struts-default">
+		<default-action-ref name="Student_list"></default-action-ref>
+		<action name="Student_list" class="com.yntravelsky.sms.action.StudentAction"
+			method="list">
+			<result>/admin/Student_list.jsp</result>
+		</action>
+	</package>
+
+
+</struts>

@@ -8,3 +8,9 @@ backup/
 *.data
 vim/
 /hide
+.settings
+.classpath
+.project
+bin/
+*.class
+*.MF
