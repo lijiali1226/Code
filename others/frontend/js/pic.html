@@ -1,0 +1,17 @@
+<img id="pic" src="1.jpg" height=100>
+<br>
+
+<select name="select" onchange="test(this)">
+	<option value="1.jpg">one</option>
+	<option value="2.jpg">two</option>
+	<option value="3.jpg">three</option>
+	<option value="4.jpg">four</option>
+</select>
+
+<script >
+	var pic=document.getElementById("pic");
+	function test(obj){
+		var index=obj.selectedIndex;
+		pic.src=obj.options[index].value;
+	}
+</script>
